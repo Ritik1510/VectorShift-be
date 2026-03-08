@@ -4,9 +4,6 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-
-app = FastAPI()
-
 # Allow CORS for the frontend running on localhost:3000
 origins = [
     "http://localhost:3000",
@@ -21,16 +18,13 @@ app.add_middleware(
     allow_headers=["*"],  
 )
 
-
 @app.get('/')
 def read_root():
     return {'Ping': 'Pong'}
 
-
 class Pipeline(BaseModel):
     nodes: list
     edges: list
-
 
 @app.post('/pipelines/parse')
 def parse_pipeline(pipeline: Pipeline):
